@@ -7,13 +7,18 @@
 </head>
 <body>
 
-    <a href="/movies">Back to Movie</a>
-    <h1>Create Movie</h1>
-    <form action="/movies/create" method="post"> 
+    <a href="/movies">Back to Movie list</a>
+    <h1><h1><%= title %></h1></h1>
+    <form action="/movies/<%= action %> " method="post"> 
         <div> 
             <label for="name"> Name:</label>
-            <input type="text" id="name" name="name"> 
-        </div>
+            <% if (locals.movie) { %>
+                <input type="hidden" id="id" name="id" value="<%= movie.id %>">
+                <input type="text" id="name" name="name" value="<%= movie.name %>">
+            <% } else { %>
+                <input type="text" id="name" name="name">
+            <% } %>
+        
         <% if (locals.errorMessage) { %>
             <p style="color: red"><%= errorMessage %> </p>
         <% } %>

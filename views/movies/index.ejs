@@ -10,9 +10,11 @@
         
         <% movies.forEach((movie) => { %>
             <li>
-                <%= movie.name %>
+                
+                <a href="/movies/update/<%= movie.id %>"><%= movie.name %></a>
                 <button type="button" onclick="deleteMovie(<%= movie.id %>)">Borrar</button>
             </li>
+
         <% }); %>
 
         <a href="/movies/create">Add Movie</a>
@@ -24,14 +26,19 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
 
-    <script>
-        function deleteMovie(id){
+  <!-- <script>
+        function deleteGame(id) {
             console.log(id);
+            
             $.post('/games/delete/' + id, function (){
                 //callback
                 window.location.reload();
             });
         }
-    </script>
+    </script> -->
+
+    <!-- /public/javascripts/index.js -->
+    <!-- src se cargan sin incluir el public -->
+    <script src="/javascripts/index.js"></script>
 </body>
 </html>
